@@ -8,6 +8,7 @@ simpleWhitespaceFile = path.join __dirname, "fixtures", "simplewhitespace"
 noFieldSeparationFile = path.join __dirname, "fixtures", "nofieldseparation"
 commentsFile = path.join __dirname, "fixtures", "comments"
 blankLineFile = path.join __dirname, "fixtures", "blankline"
+multipleStanzasFile = path.join __dirname, "fixtures", "multiplestanzas"
 
 parseStanzaAndDone = (file, done, stanzaCb) ->
 	control = ControlParser fs.createReadStream file
@@ -45,3 +46,13 @@ describe "ControlParser", ->
 		parseStanzaAndDone blankLineFile, done, (stanza) ->
 			stanza.should.have.property "Foo"
 			stanza.Foo.should.equal "hello\n\n world!"
+	it "works with multiple stanzas", (done) ->
+		control = ControlParser fs.createReadStream multipleStanzasFile
+		stanzas = []
+		control.on "stanza", (stanza) -> stanzas.push stanza
+		control.on "done", ->
+			stanzas.length.should.equal 3
+			stanzas[0].should.eql Foo: "1.1", Bar: "1.2"
+			stanzas[1].should.eql Foo: "2.1", Bar: "2.2"
+			stanzas[2].should.eql Foo: "3.1", Bar: "3.2"
+			done()
