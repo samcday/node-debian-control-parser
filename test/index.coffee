@@ -12,8 +12,13 @@ multipleStanzasFile = path.join __dirname, "fixtures", "multiplestanzas"
 
 parseStanzaAndDone = (file, done, stanzaCb) ->
 	control = ControlParser fs.createReadStream file
-	control.on "done", done
-	control.on "stanza", stanzaCb
+	gotStanza = false
+	control.on "done", ->
+		gotStanza.should.be.true
+		done()
+	control.on "stanza", (stanza) ->
+		stanzaCb(stanza)
+		gotStanza = true
 
 describe "ControlParser", ->
 	it "works with simple fields", (done) ->
