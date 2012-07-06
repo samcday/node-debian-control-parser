@@ -1,5 +1,7 @@
 # debian-control-parser `0.1.0`
 
+[![build status](https://secure.travis-ci.org/samcday/node-debian-control-parser.png)](http://travis-ci.org/samcday/node-debian-control-parser)
+
 A small Node.js library to parse control data used in Debian repositories.
 
 ## Example
