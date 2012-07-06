@@ -3,7 +3,7 @@ StreamSplitter = require "stream-splitter"
 regex = 
 	comment: /^#.*$/
 	blankLine: /^\s\..*$/
-	simpleField: /^([^\cA-\cZ\s:]+):\s(.*)$/
+	simpleField: /^([^\cA-\cZ\s:]+):\s?(.*)$/
 	continuationLine: /^\s(.*)$/
 
 # Parses Debian control files as per spec @ http://www.debian.org/doc/debian-policy/ch-controlfields.html
