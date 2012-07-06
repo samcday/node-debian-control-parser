@@ -1,0 +1,22 @@
+{
+  "name": "debian-control-parser",
+  "version": "0.1.0",
+  "description": "Debian control data parser.",
+  "main": "lib/control-parser.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/samcday/node-debian-control-parser.git"
+  },
+  "keywords": [
+    "debian",
+    "control",
+    "data",
+    "file",
+    "parser"
+  ],
+  "author": "Sam Day <me@samcday.com.au> (http://www.samcday.com.au/)",
+  "license": "(Un)license"
+}
