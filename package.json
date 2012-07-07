@@ -1,6 +1,6 @@
 {
   "name": "debian-control-parser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Debian control data parser.",
   "main": "lib/control-parser.js",
   "scripts": {
