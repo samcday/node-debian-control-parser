@@ -20,7 +20,7 @@
   "author": "Sam Day <me@samcday.com.au> (http://www.samcday.com.au/)",
   "license": "(Un)license",
   "dependencies": {
-    "stream-splitter": "~0.1.0"
+    "stream-splitter": "~0.2.0"
   },
   "devDependencies": {
     "mocha": "~1.3.0",
