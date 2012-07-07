@@ -38,7 +38,7 @@ module.exports = ControlDataParser = (stream) ->
 		# by checking the next line, if it's a continuation line, we don't end
 		# the stanza just yet.
 		if previousLine?.trim()?.length is 0 and not regex.continuationLine.test line
-			emitter.emit "stanza", stanza
+			emitter.emit "stanza", stanza if Object.keys(stanza).length
 			stanza = {}
 			currentField = null
 			isMultiLine = false
