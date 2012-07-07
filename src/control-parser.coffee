@@ -24,6 +24,7 @@ module.exports = ControlDataParser = (stream) ->
 		return err
 
 	lineHandler = (line) ->
+		line = line.replace "\r", ""
 		currentLine++
 
 		# Comments should be ignored completely.
