@@ -9,6 +9,7 @@ noFieldSeparationFile = path.join __dirname, "fixtures", "nofieldseparation"
 commentsFile = path.join __dirname, "fixtures", "comments"
 blankLineFile = path.join __dirname, "fixtures", "blankline"
 multipleStanzasFile = path.join __dirname, "fixtures", "multiplestanzas"
+badBlankLineFile = path.join __dirname, "fixtures", "badblankline"
 
 parseStanzaAndDone = (file, done, stanzaCb) ->
 	control = ControlParser fs.createReadStream file
@@ -51,6 +52,10 @@ describe "ControlParser", ->
 		parseStanzaAndDone blankLineFile, done, (stanza) ->
 			stanza.should.have.property "Foo"
 			stanza.Foo.should.equal "hello\n\n world!"
+	it "works with non-conformant blank continuation lines", (done) ->
+		parseStanzaAndDone badBlankLineFile, done, (stanza) ->
+			stanza.should.have.property "Foo"
+			stanza.Foo.should.equal "hello\n \n world!"
 	it "works with multiple stanzas", (done) ->
 		control = ControlParser fs.createReadStream multipleStanzasFile
 		stanzas = []
